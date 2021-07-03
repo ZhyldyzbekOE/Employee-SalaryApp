@@ -1,0 +1,15 @@
+package com.example.employeesalaryapp.controllers;
+
+import com.example.employeesalaryapp.services.SalaryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/v1/salary")
+public class SalaryController {
+
+    @Autowired
+    private SalaryService salaryService;
+
+}
