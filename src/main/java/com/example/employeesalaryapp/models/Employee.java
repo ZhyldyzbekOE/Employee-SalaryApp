@@ -10,14 +10,12 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String surname;
     private boolean active;
 
     public Employee() { }
 
-    public Employee(String name, String surname) {
+    public Employee(String name) {
         this.name = name;
-        this.surname = surname;
     }
 
     public Long getId() {
@@ -49,7 +47,6 @@ public class Employee {
         return "Employee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
                 ", active=" + active +
                 '}';
     }
