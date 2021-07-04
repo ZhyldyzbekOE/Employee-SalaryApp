@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class SalaryServiceImpl implements SalaryService {
@@ -88,6 +89,12 @@ public class SalaryServiceImpl implements SalaryService {
         empSalaryToUpdateAndView1.setName(salary1.getEmployee().getName());
         empSalaryToUpdateAndView1.setSalary(salary1.getSalary());
         return empSalaryToUpdateAndView1;
+    }
+
+    @Override
+    public List<Salary> allCurrentRowsFromSalaries() {
+        List<Salary> salaries = salaryRepository.findAllByCurrentSalary();
+        return salaries;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.employeesalaryapp.services;
 
+import com.example.employeesalaryapp.models.Salary;
 import com.example.employeesalaryapp.models.dto.EmpSalaryDto;
 import com.example.employeesalaryapp.models.dto.EmpSalaryToUpdateAndView;
 
@@ -11,4 +12,5 @@ public interface SalaryService {
 
     EmpSalaryToUpdateAndView updateSalary(EmpSalaryToUpdateAndView empSalaryToUpdateAndView);
 
+    List<Salary> allCurrentRowsFromSalaries();
 }
