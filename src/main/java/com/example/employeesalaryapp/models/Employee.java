@@ -8,7 +8,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long EmpId;
     private String name;
     private boolean active;
 
@@ -18,12 +18,12 @@ public class Employee {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
+    public Long getEmpId() {
+        return EmpId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setEmpId(Long empId) {
+        EmpId = empId;
     }
 
     public String getName() {
@@ -45,7 +45,7 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
+                "id=" + EmpId +
                 ", name='" + name + '\'' +
                 ", active=" + active +
                 '}';
