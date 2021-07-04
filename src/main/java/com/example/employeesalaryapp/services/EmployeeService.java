@@ -12,4 +12,6 @@ public interface EmployeeService {
     EmployeeDto existEmployeeById(EmployeeDto employeeDto);
 
     List<EmpSalaryToUpdateAndView> selectAllEmployees();
+
+    EmployeeDto deactivateEmployee(Long id);
 }

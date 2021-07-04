@@ -49,8 +49,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<EmpSalaryToUpdateAndView> selectAllEmployees() {
         List<Salary> salaries = salaryService.allCurrentRowsFromSalaries();
         for (Salary s : salaries) {
-            System.out.println(s);
-        };
+            System.out.println("Этот " + s);
+        }
         List<EmpSalaryToUpdateAndView> empSalaryToUpdateAndViewList = salaries.stream()
                 .map(x -> {
                     EmpSalaryToUpdateAndView empSalaryToUpdateAndView = new EmpSalaryToUpdateAndView();
@@ -61,5 +61,17 @@ public class EmployeeServiceImpl implements EmployeeService {
                 })
                 .collect(Collectors.toList());
         return empSalaryToUpdateAndViewList;
+    }
+
+    @Override
+    public EmployeeDto deactivateEmployee(Long id) {
+        if (employeeRepository.existsById(id)){
+            Employee employee = employeeRepository.findById(id).get();
+            EmployeeDto employeeDto = EmployeeMapper.INSTANCE.toEmployeeDto(employee);
+            employeeDto.setActive(false);
+            Employee empToSaved = employeeRepository.save(EmployeeMapper.INSTANCE.toEmployee(employeeDto));
+            return EmployeeMapper.INSTANCE.toEmployeeDto(empToSaved);
+        }
+        throw new ClientNotFoundById("Пользователь по данному Id не найден. Введите корректные данный!");
     }
 }

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SalaryServiceImpl implements SalaryService {
@@ -94,7 +95,10 @@ public class SalaryServiceImpl implements SalaryService {
     @Override
     public List<Salary> allCurrentRowsFromSalaries() {
         List<Salary> salaries = salaryRepository.findAllByCurrentSalary();
-        return salaries;
+        List<Salary> salaryListFilter = salaries.stream()
+                .filter(x -> x.getEmployee().isActive())
+                .collect(Collectors.toList());
+        return salaryListFilter;
     }
 
 }
